@@ -1,9 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:newproject/myhome.dart';
 import 'package:newproject/screens/bottonnavbar.dart';
-import 'package:newproject/screens/carouselloading.dart';
 import 'package:newproject/screens/homepage.dart';
-import 'package:newproject/screens/offerpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:   BottomNavBar(),
+      home:BottomNavBar(),
     );
   }
 }

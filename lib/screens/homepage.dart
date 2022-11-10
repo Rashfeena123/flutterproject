@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                   // Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationView()));
                 },
                 icon: Stack(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.notifications_none_outlined,
                       color: Colors.black,
@@ -165,387 +166,401 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 140),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height /15,
+            // margin: EdgeInsets.fromLTRB(0, 5, 100, 15),
             child: Text(
               "Recommend Point Offers",
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
             ),
           ),
           Container(
-            height: 170,
-            child: Container(
-                padding: EdgeInsets.only(top: 10, bottom: 5,left: 5),
-                height: 170,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: cards.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 3),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                              ),
-                              child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 100,
-                                child: Image.asset(
-                                  cards[index],
-                                  fit: BoxFit.cover,
-                                  width: 280,
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                height: 40,
-                                width: 280,
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                     logo[index],
-                                      width: 30,
-                                      height: 30,
-                                      fit: BoxFit.cover,
+            // color: Colors.green,
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cards.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(10, 0, 0, 15),
+                    child: Material(
+                      elevation: 10,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(cards[index]),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(10))),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.11,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.10,
+                                      // width: 50.0,
+                                      // height: 45.0,
+                                      child: Image.asset(
+                                        logo[index],
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                     SizedBox(
-                                      width: 5,
+                                      width: 5.0,
                                     ),
                                     Text(
                                       luluname[index],
                                       style: TextStyle(
-                                          fontSize: 8,
+                                          fontSize: 9,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 90),
-                                      child: InkWell(
-                                        //                                   onTap: () {},
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: Colors.orangeAccent,
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          height: 15,
-                                          width: 55,
-                                          child: Center(
-                                            child: const Text('Member Only',
-                                                style: TextStyle(
-                                                  fontSize: 8,
-                                                  color: Colors.white,
-                                                )),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                    )
                                   ],
                                 ),
-                              ),
-                            ],
-                              ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 10, right: 7),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              23,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 11.0, vertical: 7.0),
+                                      decoration: BoxDecoration(
+                                          color: Colors.orangeAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(9)),
+                                      child: Center(
+                                        child: const Text('Member Only',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.white,
+                                            )),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
+                          ],
                         ),
-                      );
-                    })),
+                      ),
+                    ),
+                  );
+                }),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 120),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height /15,
+            // margin: EdgeInsets.fromLTRB(0, 5, 90, 15),
             child: Text(
               "Recommend Dining Offers",
-              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
             ),
           ),
           Container(
-              padding: EdgeInsets.only(top: 10, bottom: 5),
-              height: 210,
+              height: MediaQuery.of(context).size.height * 0.25,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: food.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.only(left: 5,right: 0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Container(
-                            height: 160.0,
-                           // color: Colors.yellow,
-                            width: 180,
-                            child: Stack(
+                      padding: const EdgeInsets.only(left: 5, right: 0),
+                      child: Stack(children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(8, 0, 0, 15),
+                          child: Material(
+                            elevation: 10,
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
                                 children: [
-                              Container(
-                                height: 140,
-                                width: 180,
-                                child: Container(
-                                  height: 100,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                    child: Image.asset(
-                                      food[index],
-                                      fit: BoxFit.cover,
-                                      width: 240,
-                                    ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(food[index]),
+                                            fit: BoxFit.cover),
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(10))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 110,
+                          left: 0,
+                          child: Container(
+                            padding: EdgeInsets.only(left: 20),
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: MediaQuery.of(context).size.height / 20,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Enjoy Your Dining",
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 90,
+                          right: 0,
+                          child: Container(
+                            padding: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                                color: Color(0xff3F3B6C),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(13),
+                                    bottomLeft: Radius.circular(13))),
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            height: MediaQuery.of(context).size.height / 25,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "30% Points Offer",
+                                  style: TextStyle(
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 20,
+                          left: 10,
+                          child:   Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.center,
+                              mainAxisAlignment:
+                              MainAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * 0.1,
+                                  height: MediaQuery.of(context).size.width /10,
+                                  child: Image.asset(
+                                    "assets/images/logo.jpeg",
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 130,),
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 12),
-                                      height: 55,
-                                      width: 200,
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/logo.jpeg",
-                                            width: 20,
-                                            height: 20,
-                                            fit: BoxFit.cover,
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Text(
-                                            luluname[index],
-                                            style: TextStyle(
-                                                fontSize: 6,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Container(
-                                            // color: Colors.red,
-                                            width: 80,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                              children: [
-                                                RatingBar.builder(
-                                                  itemSize: 13,
-                                                  initialRating: 3,
-                                                  minRating: 1,
-                                                  direction: Axis.horizontal,
-                                                  allowHalfRating: true,
-                                                  itemCount: 5,
-                                                  itemPadding: EdgeInsets.symmetric(
-                                                      horizontal: 1.0),
-                                                  itemBuilder: (context, _) => Icon(
-                                                    Icons.star,
-                                                    color: Colors.amber,
-                                                  ),
-                                                  onRatingUpdate: (rating) {
-                                                    print(rating);
-                                                  },
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(right: 10),
-                                                  child: InkWell(
-                                                    //                                   onTap: () {},
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.orangeAccent,
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              5)),
-                                                      height: 15,
-                                                      width: 55,
-                                                      child: Center(
-                                                        child:
-                                                        const Text('Member Only',
-                                                            style: TextStyle(
-                                                              fontSize: 8,
-                                                              color: Colors.white,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                SizedBox(
+                                  width: 1.0,
+                                ),
+                                Text(
+                                  luluname[index],
+                                  style: TextStyle(
+                                      fontSize: 6,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.19,
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                crossAxisAlignment:
+                                CrossAxisAlignment.center,
+                                children: [
+                                  RatingBar.builder(
+                                    itemSize: 11,
+                                    initialRating: 3,
+                                    minRating: 1,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    itemCount: 5,
+                                    itemPadding: EdgeInsets.symmetric(
+                                        horizontal: 1.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
                                     ),
+                                    onRatingUpdate: (rating) {
+                                      print(rating);
+                                    },
                                   ),
-                                  Positioned(
-                                bottom: 100,
-                                left: 0,
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 20),
-
-                                  height: 30,
-                                  width: 150,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Enjoy Your Dining",
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.white
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, right: 3,left: 4,bottom: 6),
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width * 0.2,
+                                        height: MediaQuery.of(context).size.height/40,
+                                        decoration: BoxDecoration(
+                                            color: Colors.orangeAccent,
+                                            borderRadius:
+                                            BorderRadius.circular(9)),
+                                        child: Center(
+                                          child: const Text('Member Only',
+                                              style: TextStyle(
+                                                fontSize: 7,
+                                                color: Colors.white,
+                                              )),
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                              Positioned(
-                                bottom: 75,
-                                right: 0,
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 20),
-                                 decoration: BoxDecoration(
-
-                                   color: Color(0xff3F3B6C),
-                                   borderRadius: BorderRadius.only(topLeft: Radius.circular(13),bottomLeft: Radius.circular(13) )
-                                   
-                                 ),
-                                  height: 30,
-                                  width: 90,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("30% Points Offer",
-                                        style: TextStyle(
-                                         fontSize: 9,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white
-                                        ),),
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-
-
-                            ])),
-                      ),
+                            ),
+                          ],
+                        ),)
+                      ]),
                     );
                   })),
-          Padding(
-            padding: const EdgeInsets.only(right: 50,top: 15),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height /15,
+            // margin: EdgeInsets.fromLTRB(0, 5, 10, 10),
             child: Text(
               "Earn and Redeem Online & Instore",
-              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
             ),
           ),
           Container(
-              padding: EdgeInsets.only(top: 10, bottom: 5),
-              height: 150,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount:booking.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 9,right: 0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Container(
-                            height: 150.0,
-                            // color: Colors.yellow,
-                            width: 120,
-                            child: Stack(
-                                children: [
-                                  Container(
-                                    height: 90,
-                                    width: 120,
-                                    child: Container(
-                                      height: 100,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                        ),
-                                        child: Image.asset(
-                                          booking[index],
-                                          fit: BoxFit.cover,
-                                          width: 120,
-                                        ),
+            // color: Colors.green,
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: booking.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(13, 0, 0, 15),
+                    child: Material(
+                      elevation: 10,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(booking[index]),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(10))),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin:EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.10,
+                                      height:
+                                      MediaQuery.of(context).size.width *
+                                          0.10,
+                                      child: Image.asset(
+                                        "assets/images/logo.jpeg",
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 80,),
+                                    SizedBox(
+                                      width: 0.0,
+                                    ),
+                                    Text(
+                                      book[index],
+                                      style: TextStyle(
+                                          fontSize: 5.5,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                  const EdgeInsets.only(top: 10, right: 7),
+                                  child: InkWell(
+                                    onTap: () {},
                                     child: Container(
-                                      padding: EdgeInsets.only(left: 5),
-                                      height: 55,
-                                      width: 200,
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/logo.jpeg",
-                                            width: 20,
-                                            height: 20,
-                                            fit: BoxFit.cover,
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Text(
-                                            book[index],
+                                      width: MediaQuery.of(context).size.width *
+                                          0.14,
+                                      height:
+                                      MediaQuery.of(context).size.height /
+                                          25,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 11.0, vertical: 7.0),
+                                      decoration: BoxDecoration(
+                                          color: Colors.orangeAccent,
+                                          borderRadius:
+                                          BorderRadius.circular(9)),
+                                      child: Center(
+                                        child: const Text('Book Now',
                                             style: TextStyle(
-                                                fontSize: 6,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 8),
-                                            child: InkWell(
-                                              //                                   onTap: () {},
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    color: Colors.orangeAccent,
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        5)),
-                                                height: 13,
-                                                width: 30,
-                                                child: Center(
-                                                  child:
-                                                  const Text('Book Now',
-                                                      style: TextStyle(
-                                                        fontSize: 5,
-                                                        color: Colors.white,
-                                                      )),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                              fontSize: 5,
+                                              color: Colors.white,
+                                            )),
                                       ),
                                     ),
                                   ),
-
-
-
-
-                                ])),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    );
-                  })),
-
+                    ),
+                  );
+                }),
+          ),
         ]),
       ),
     );
