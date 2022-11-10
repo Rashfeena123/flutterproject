@@ -168,8 +168,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height /15,
-            // margin: EdgeInsets.fromLTRB(0, 5, 100, 15),
+            height: MediaQuery.of(context).size.height /20,
             child: Text(
               "Recommend Point Offers",
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
@@ -274,7 +273,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height /15,
+            height: MediaQuery.of(context).size.height /20,
             // margin: EdgeInsets.fromLTRB(0, 5, 90, 15),
             child: Text(
               "Recommend Dining Offers",
@@ -291,7 +290,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.only(left: 5, right: 0),
                       child: Stack(children: [
                         Container(
-                          margin: EdgeInsets.fromLTRB(8, 0, 0, 15),
+                          margin: EdgeInsets.fromLTRB(5, 0, 0, 15),
                           child: Material(
                             elevation: 10,
                             borderRadius: BorderRadius.circular(10),
@@ -458,7 +457,7 @@ class _HomePageState extends State<HomePage> {
                   })),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height /15,
+            height: MediaQuery.of(context).size.height /20,
             // margin: EdgeInsets.fromLTRB(0, 5, 10, 10),
             child: Text(
               "Earn and Redeem Online & Instore",
@@ -467,13 +466,13 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             // color: Colors.green,
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: MediaQuery.of(context).size.height * 0.23,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: booking.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.fromLTRB(13, 0, 0, 15),
+                    margin: EdgeInsets.fromLTRB(9, 0, 0, 15),
                     child: Material(
                       elevation: 10,
                       borderRadius: BorderRadius.circular(10),
@@ -535,7 +534,7 @@ class _HomePageState extends State<HomePage> {
                                           0.14,
                                       height:
                                       MediaQuery.of(context).size.height /
-                                          25,
+                                          40,
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 11.0, vertical: 7.0),
                                       decoration: BoxDecoration(
